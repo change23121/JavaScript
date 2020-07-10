@@ -1,0 +1,412 @@
+document.getElementById("demo").innerHTML="Hello new user";
+
+<script> has to be used after <body> bcoz it may possible we are using the elements which are not yet rendered.
+therefore, we wait for full page to get endered and then use the scripting.
+
+Internally <script> ... </script>
+Externally <script src ="myJs.js"></script>
+
+DATA TYPES 
+1. Number --> Numeric value
+2. Boolean --> True or False
+3. String --> characters in single/double quotes ('/")
+4. Null --> It is one specific value null
+5. Arrays --> Indexable list of items
+6. Object --> Group of attrobutes value pairs
+7. Special values --> 
+	NaN :- Not a Number
+	Undefined :- a declared variable which is not defined
+
+===============================================================================================================
+
+console.log("In console");
+document.write(("In Browser");
+
+Javascript --> variables
+
+var is generic, you can store number, string etc
+
+console.log(typeof a);
+
+===============================================================================================================
+
+ARRAYS
+
+Declaration
+var space = ["moon", "star", "sun"];
+		or
+var space = new Array ("moon", "star", "sun");
+		or
+var marks = new Array();
+
+---------------------------------------------------------------------------------------------------------------
+
+Acceessing elements
+
+var bodies = space[0] + space[3];
+space[0] ="planet";
+
+===============================================================================================================
+
+space.length
+
+	Type conversion
+console.log (2+"hi"); 		//implicitly converted to string
+
+var num = prompt("enter number");	//by default prompt value is considered to be string.
+
+console.log(parseInt(num)+9);		//to have a number datatype of num instead of string
+
+alert("hi this is alert");
+
+alert --> gives alert
+
+prompt --> asks for the value
+
+===============================================================================================================
+
+	OPERATORS
+Arithmetic
+String(+)
+Assignment
+Comparison
+Boolean
+Ternary
+
+We can include as many script file as much as we want
+
+== --> equal
+=== --> equal value and same type
+!= --> not equal
+!== --> not equal value or not same type
+
+s1=9, s2="9"
+ 
+true for ==
+false for ===
+
+--------------------------------------------------------------------------------------
+
+Conditional statements
+
+if
+if-else
+if-else-if-else
+switch
+
+Switch 
+test exprsn --> int, float, string or boolean
+case exprsn --> int , float, string or boolean
+
+---------------------------------------------------------------------------------
+
+Loops
+
+for
+do-while
+while
+for-in
+
+for(initialization ; condition; updation) {}
+
+For-In
+
+for( variable in object) { }
+
+eg for (m in marks)
+
+while (condn) { }
+runs till boolean false value is not returned
+
+do{} while(condn);
+
+===================================================================================
+
+FUNCTIONS
+
+A function parameter is value, which is accepted by the function
+Parameters in a function call are arguments
+
+fun ( var a, var b) { }		//parameter
+fun(2,3)			//argument
+
+function must return value
+The default value i.e returned is the value undefined
+
+TYPES OF FUNCTIONS
+1. Named functions
+2. Anonymous functions
+3. Self-Invoking functions
+4. Constructors
+
+------------------------------------------------------------------------------------
+
+NAMED FUNCTN
+- has a unique name
+- can be called/used in multiple places
+
+	eg funtion addNum(a,b)
+	{ return a+b; }
+	
+	var c = addNum(4,5);
+--------------------------------------------------------------------------------------
+ANONYMOUS FUNT
+- does not have a name
+- can be used once only
+	(when it is called immediately after it is defined or actual argument to functn)
+- function defined is used as an exprssn
+- can be stored in a variable
+- passed as an actual argument to funct
+- can be returned as a value by a functn
+
+	eg
+	1. stored in a variable
+	var add = function(a, b)
+	{ return a+b; }
+	add(2,3);
+
+	2. Passed as an argument to another funct
+	setTimeot(function() {alert("message"); }, 500);
+
+-------------------------------------------------------------------------------------------
+CONSTRUCTORS
+- called when object is created using new keyword
+	eg - var addFun = new Function("a", "b","return a+b;");
+	var c = addFun(2,3);
+
+		is same as
+	var addFun = function(a,b){
+			return a+b; };
+	var c = addFun(2,3);
+
+------------------------------------------------------------------------------------------
+
+SELF-INVOKING FUNCTN
+- self invoking functn are anonymous functn which are invoked right after the funct has been defined
+- you can execute the code once, without declaring any global variables
+- no reference is mainted to this function, not even to its return value
+
+Syntax --> (function() { //body} () );
+		or
+		(function() { //body }) ();
+
+//just use () after functn defn
+eg--> 	(function()
+	   alert("this is self invoking functn");
+	})();
+
+------------------------------------------------------------------------------------------
+
+All 4 types of function with squre example
+
+//name functn
+function nCalsq(a) { return a*a; }
+
+//anonymous functn
+var aCal = function(b) { return b*b; }
+
+//new const
+var cCal = new Function("return a*a;" );
+
+//self invoking funct
+(function(a)  { return a*a; }) (9);
+
+nCalsq(2); aCal(3); cCal(4);
+
+---------------------------------------------------------------------------------------------
+
+CLOSURES
+- Implicit permanent link b/w functn and its scope chain
+- a functn defn ( lamda) hidden [[scope]] ("[[]]" denotes inernal property ref
+	- holds the scope chain (preventing garbage collection)
+	- it is used and copied as the "outer environment ref" anytime the functn is run
+- we saw an example of closure in the previous slide, where local memory of f() is not garbage 
+  collected even when there is no way to access f().
+
+eg -->
+  
+var add = ( function() {
+	var counter =0;
+	return function() { return counter+=1; }
+	})();
+
+everytime when we call add() the counter will increase i.e 1,2,... because scope of counter is global
+
+when you have global var pointing to outer funct which has inner functn then the var of outer functn becomes 
+part of inner functn and doesn't get initalized evertime when you called this global var i.e closure
+
+=======================================================================================================
+
+JSON ==> JAva Script Object Notation
+
+- part of object	
+Properties --> what it posses --> leg
+Methods/functionalities --> what it can do --> dance
+
+OBJECT CREATION
+
+- creating with new keyword
+
+var person = new Object();
+person.name="saya";
+person.age=46;
+
+- creating {} with initial set of properties ( attributes ) with . (dot)
+
+var person = {};
+person.name = "saya";
+person.age=46;
+
+- creating initial set of properties (attr) with []
+
+var person ={};
+person['name']="saya";
+
+-creating with initial set of prop(attr) with {}
+
+var person = {name: "saya", age:46};
+alert(person.name + person.age);
+
+-creating object with constructor functn
+set values for initial set of prop(attr)
+constructor is executed when object is created with new keyword
+
+function Person(){
+	this.name ="Saya"; this.age=46; }
+var person = new Person();
+alert(person.name + person.age);
+
+-Object creation with Object.create()
+creates (duplicates) an object with a prototype obj
+no need to define a const functn for obj
+set values for initaila set of prop(attr)
+
+var Animal = {type : "mammal",
+		displayType: function() {
+		alert(this.type); })
+
+var animal1 = Object.create(Animal);
+animal1.displayType();
+var fish = object.create(Animal);
+fish.type="Fishes"; 
+fish.displayType();
+
+-----------------------------------------------------------------------------------------------------
+OBJECT PROPERTY DELETION
+
+- object property (attribute) deletion
+- delete an object's property with delete keyword
+
+person = { name ="saya" , age:40};
+var props="";
+for( p in person)
+	props+=p+" ";
+alert("Prop of object are: " + props);
+delete Person.age;
+
+======================================================================================================
+BROWSER OBJECT MODEL (BOM)
+
+						WINDOW OBJECT
+
+
+LOCATION OBJ 		HISTORY OBJ 	DOCUMENT OBJ 	NAVIGATOR OBJ 		SCREEN ONJ
+
+-----------------------------------------------------------------------------------------------------
+
+				DOCUMENT OBJ
+
+		FORMS OBJ	IMAGE OBJ 	LINKS OBJ
+
+-------------------------------------------------------------------------------------------------------
+- browser obj are global obj
+- available throughout the JScode to interact with browser prop
+
+window.open();
+	or
+window.open("","newWindow","height=100, width=200");
+	or
+var newWin= window.open("http://www.google.com","newWindow","height=100, width=200");
+newWindow.moveTo(200,150);
+newWindow.close();
+window.close(); 		//close current window
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
